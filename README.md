@@ -118,13 +118,13 @@ python3 -m forticnapp_vuln_report <api-key-path> [options]
 
 ## Output formats
 
-**Markdown**: Summary stats, ranked package table, per-package host breakdown. Good for pasting into tickets or docs.
+**Markdown** (<a href="output/example-vuln-report.md">example</a>): Summary stats, ranked package table, per-package host breakdown. Good for pasting into tickets or docs.
 
-**JSON**: Structured data with `metadata`, `summary`, `by_package`, and `by_host` sections. Pipe into other tools or dashboards.
+**JSON** (<a href="output/example-vuln-report.json">example</a>): Structured data with `metadata`, `summary`, `by_package`, and `by_host` sections. Pipe into other tools or dashboards.
 
-**CSV**: One row per (CVE, package, host), sorted by priority score. Opens directly in any spreadsheet app.
+**CSV** (<a href="output/example-vuln-report.csv">example</a>): One row per (CVE, package, host), sorted by priority score. Opens directly in any spreadsheet app.
 
-**Excel**: Four sheets (Summary, By Package, By Host, Detail) with styled headers, auto-column widths, auto-filters, and CVE hyperlinks.
+**Excel** (<a href="output/example-vuln-report.xlsx">example</a>): Four sheets (Summary, By Package, By Host, Detail) with styled headers, auto-column widths, auto-filters, and CVE hyperlinks.
 
 ## Priority scoring
 
