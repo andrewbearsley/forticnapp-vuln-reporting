@@ -1,5 +1,6 @@
 api-key/*.json
-/output/
+/output/*
+!/output/example-*
 __pycache__/
 *.pyc
 .DS_Store
