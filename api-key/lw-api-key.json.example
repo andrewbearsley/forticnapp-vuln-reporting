@@ -1,0 +1,6 @@
+{
+  "keyId": "[my key id]",
+  "secret": "[my key secret]",
+  "account": "[my account]",
+  "subAccount": "[my sub account - optional]"
+}

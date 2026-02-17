@@ -1,0 +1,175 @@
+"""API call handling, rate limiting, and vulnerability fetching."""
+
+import datetime
+import json
+import re
+import subprocess
+import time
+from typing import Dict, List, Tuple
+
+from .config import CONFIG, RATE_LIMIT_PATTERNS
+from .logger import Logger
+
+
+def make_api_call(
+    cmd: List[str],
+    env: Dict[str, str],
+    retry_count: int = 0,
+) -> Tuple[str, bool]:
+    """Make API call via lacework CLI with rate limit handling.
+
+    Returns (output, was_rate_limited). was_rate_limited is True when retries
+    were exhausted due to rate limiting (output will be "").
+    """
+    while retry_count < CONFIG.MAX_RETRIES:
+        Logger.verbose(f"Executing: {' '.join(cmd)}")
+
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, env=env)
+            output = result.stdout + result.stderr
+
+            if _check_rate_limit(output, result.returncode):
+                _handle_rate_limit(retry_count, output)
+                retry_count += 1
+                continue
+
+            if result.returncode != 0:
+                if _is_valid_json(result.stdout):
+                    return result.stdout, False
+                Logger.warning(f"Command failed (exit {result.returncode})")
+                Logger.verbose(f"Output: {output}")
+                return "", False
+
+            return result.stdout, False
+
+        except Exception as e:
+            Logger.warning(f"Error executing command: {e}")
+            return "", False
+
+    Logger.warning(f"Failed after {CONFIG.MAX_RETRIES} attempts (rate limited)")
+    return "", True
+
+
+def build_search_filters(min_severity: str) -> Dict:
+    """Build the search request body with filters."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    start = now - datetime.timedelta(days=CONFIG.MAX_TIME_RANGE_DAYS)
+
+    severity_values = ["Critical"] if min_severity == "Critical" else ["Critical", "High"]
+
+    filters = [
+        {"field": "severity", "expression": "in", "values": severity_values},
+        {"field": "fixInfo.fix_available", "expression": "eq", "value": "1"},
+        {"field": "status", "expression": "in", "values": ["Active", "New"]},
+    ]
+
+    return {
+        "timeFilter": {
+            "startTime": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "endTime": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        },
+        "filters": filters,
+        "returns": [
+            "vulnId", "severity", "status", "fixInfo", "featureKey",
+            "machineTags", "cveProps", "evalCtx", "startTime",
+            "riskInfo", "hostRiskScore", "cveRiskScore",
+        ],
+    }
+
+
+def fetch_vulnerabilities(env: Dict[str, str], min_severity: str) -> List[Dict]:
+    """Fetch all vulnerability entries with pagination."""
+    search_body = build_search_filters(min_severity)
+    body_json = json.dumps(search_body)
+
+    Logger.info(f"Fetching vulnerabilities (severity >= {min_severity}, fixable, active)...")
+    Logger.verbose(f"Search body: {body_json}")
+
+    all_entries = []
+    page = 1
+
+    # First page via POST
+    cmd = [
+        "lacework", "api", "post",
+        "/api/v2/Vulnerabilities/Hosts/search",
+        "-d", body_json,
+        "--json", "--noninteractive", "--nocache",
+    ]
+
+    output, rate_limited = make_api_call(cmd, env)
+    if rate_limited or not output:
+        Logger.error("Failed to fetch vulnerabilities from API")
+        return []
+
+    try:
+        data = json.loads(output)
+    except json.JSONDecodeError:
+        Logger.error("Failed to parse API response")
+        Logger.verbose(f"Raw output: {output[:1000]}")
+        return []
+
+    entries = data.get("data", [])
+    all_entries.extend(entries)
+    Logger.info(f"Page {page}: {len(entries)} entries")
+
+    # Paginate
+    while data.get("paging", {}).get("urls", {}).get("nextPage"):
+        next_url = data["paging"]["urls"]["nextPage"]
+        page += 1
+
+        time.sleep(CONFIG.REQUEST_DELAY)
+
+        cmd = [
+            "lacework", "api", "get", next_url,
+            "--json", "--noninteractive", "--nocache",
+        ]
+        output, rate_limited = make_api_call(cmd, env)
+        if rate_limited or not output:
+            Logger.warning(f"Pagination stopped at page {page} (rate limited or empty)")
+            break
+
+        try:
+            data = json.loads(output)
+        except json.JSONDecodeError:
+            Logger.warning(f"Failed to parse page {page}")
+            break
+
+        entries = data.get("data", [])
+        all_entries.extend(entries)
+        Logger.info(f"Page {page}: {len(entries)} entries")
+
+        if len(entries) < CONFIG.PAGE_SIZE:
+            break
+
+    Logger.info(f"Total raw entries fetched: {len(all_entries)}")
+    return all_entries
+
+
+def _check_rate_limit(output: str, exit_code: int) -> bool:
+    """Check if output indicates rate limiting."""
+    if exit_code == 0 and _is_valid_json(output):
+        return False
+    for pattern in RATE_LIMIT_PATTERNS:
+        if re.search(pattern, output, re.IGNORECASE):
+            return True
+    return False
+
+
+def _is_valid_json(text: str) -> bool:
+    """Check if text is valid JSON."""
+    try:
+        json.loads(text)
+        return True
+    except (json.JSONDecodeError, ValueError):
+        return False
+
+
+def _handle_rate_limit(retry_count: int, output: str) -> None:
+    """Handle rate limit with incremental backoff."""
+    delay = CONFIG.BACKOFF_INCREMENT * (retry_count + 1)
+    Logger.warning(
+        f"Rate limited (429). Waiting {delay}s before retry "
+        f"{retry_count + 1}/{CONFIG.MAX_RETRIES}..."
+    )
+    Logger.verbose(f"Response: {output[:500]}")
+    time.sleep(delay)
