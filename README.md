@@ -2,6 +2,8 @@
 
 A CLI tool that queries the FortiCNAPP (Lacework) host vulnerability API and generates prioritised reports. It pulls fixable, active vulnerabilities, scores them by severity and exploit availability, then groups the results by package or host so you can see what to patch first.
 
+<img src="docs/example-markdown-output.png" alt="Example markdown report output" width="700">
+
 ## What it does
 
 - Fetches host vulnerabilities from the FortiCNAPP API (last 7 days)
