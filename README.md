@@ -6,8 +6,8 @@ A CLI tool that queries the FortiCNAPP (Lacework) host vulnerability API and gen
 
 ## What it does
 
-- Fetches host vulnerabilities from the FortiCNAPP API (last 7 days)
-- Filters to fixable, active CVEs at Critical or High severity
+- Fetches host vulnerabilities from the FortiCNAPP API (configurable lookback, up to 7 days)
+- Filters to fixable, active CVEs at or above your chosen severity threshold
 - Deduplicates entries across overlapping scan results
 - Scores each finding using CVSS + exploit risk factors
 - Groups by package (what to update) or by host (what to patch)
@@ -66,10 +66,16 @@ Or via the wrapper script:
 python3 scripts/forticnapp_vuln_report.py api-key/mykey.json
 ```
 
-### Include High severity
+### Include High severity and above
 
 ```bash
 python3 -m forticnapp_vuln_report api-key/mykey.json -s high
+```
+
+### Medium severity, last 3 days
+
+```bash
+python3 -m forticnapp_vuln_report api-key/mykey.json -s medium -d 3
 ```
 
 ### JSON output (pipe to jq for quick summary)
@@ -110,7 +116,8 @@ python3 -m forticnapp_vuln_report <api-key-path> [options]
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `-s, --severity {critical,high}` | Minimum severity to include | `critical` |
+| `-s, --severity {critical,high,medium,low,info}` | Minimum severity to include | `critical` |
+| `-d, --days 1-7` | Number of days to look back | `7` |
 | `-f, --format {markdown,json,csv,excel}` | Output format | `markdown` |
 | `-o, --output PATH` | Output file (stdout if omitted) | stdout |
 | `--view {package,host,both}` | Report grouping | `package` |

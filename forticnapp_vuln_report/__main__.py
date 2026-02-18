@@ -41,9 +41,17 @@ Examples:
     )
     parser.add_argument(
         "-s", "--severity",
-        choices=["critical", "high"],
+        choices=["critical", "high", "medium", "low", "info"],
         default="critical",
         help="Minimum severity to include (default: critical)",
+    )
+    parser.add_argument(
+        "-d", "--days",
+        type=int,
+        default=7,
+        choices=range(1, 8),
+        metavar="1-7",
+        help="Number of days to look back (default: 7, max: 7)",
     )
     parser.add_argument(
         "-f", "--format",
@@ -115,7 +123,7 @@ def main():
     env = configure_lacework(api_key)
 
     # Fetch
-    raw_entries = fetch_vulnerabilities(env, min_severity)
+    raw_entries = fetch_vulnerabilities(env, min_severity, args.days)
     if not raw_entries:
         Logger.warning("No vulnerabilities found matching criteria")
         if output_format == OutputFormat.JSON:

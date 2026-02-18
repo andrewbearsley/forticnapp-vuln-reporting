@@ -7,7 +7,7 @@ import subprocess
 import time
 from typing import Dict, List, Tuple
 
-from .config import CONFIG, RATE_LIMIT_PATTERNS
+from .config import CONFIG, RATE_LIMIT_PATTERNS, SEVERITY_ORDER
 from .logger import Logger
 
 
@@ -50,12 +50,14 @@ def make_api_call(
     return "", True
 
 
-def build_search_filters(min_severity: str) -> Dict:
+def build_search_filters(min_severity: str, days: int = 7) -> Dict:
     """Build the search request body with filters."""
     now = datetime.datetime.now(datetime.timezone.utc)
-    start = now - datetime.timedelta(days=CONFIG.MAX_TIME_RANGE_DAYS)
+    start = now - datetime.timedelta(days=days)
 
-    severity_values = ["Critical"] if min_severity == "Critical" else ["Critical", "High"]
+    # Include all severities at or above the minimum
+    min_order = SEVERITY_ORDER.get(min_severity, 1)
+    severity_values = [s for s, order in SEVERITY_ORDER.items() if order <= min_order]
 
     filters = [
         {"field": "severity", "expression": "in", "values": severity_values},
@@ -77,9 +79,9 @@ def build_search_filters(min_severity: str) -> Dict:
     }
 
 
-def fetch_vulnerabilities(env: Dict[str, str], min_severity: str) -> List[Dict]:
+def fetch_vulnerabilities(env: Dict[str, str], min_severity: str, days: int = 7) -> List[Dict]:
     """Fetch all vulnerability entries with pagination."""
-    search_body = build_search_filters(min_severity)
+    search_body = build_search_filters(min_severity, days)
     body_json = json.dumps(search_body)
 
     Logger.info(f"Fetching vulnerabilities (severity >= {min_severity}, fixable, active)...")
