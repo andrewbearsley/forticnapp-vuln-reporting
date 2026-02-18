@@ -52,7 +52,9 @@ def make_api_call(
     return "", True
 
 
-def build_search_filters(min_severity: str, days: int = 1) -> Dict:
+def build_search_filters(
+    min_severity: str, days: int = 1, tag_filters: Dict | None = None,
+) -> Dict:
     """Build the search request body with filters."""
     now = datetime.datetime.now(datetime.timezone.utc)
     start = now - datetime.timedelta(days=days)
@@ -66,6 +68,15 @@ def build_search_filters(min_severity: str, days: int = 1) -> Dict:
         {"field": "fixInfo.fix_available", "expression": "eq", "value": "1"},
         {"field": "status", "expression": "in", "values": ["Active", "New"]},
     ]
+
+    # Machine tag filters (server-side)
+    if tag_filters:
+        for key, value in tag_filters.items():
+            filters.append({
+                "field": f"machineTags.{key}",
+                "expression": "eq",
+                "value": value,
+            })
 
     return {
         "timeFilter": {
@@ -81,9 +92,12 @@ def build_search_filters(min_severity: str, days: int = 1) -> Dict:
     }
 
 
-def fetch_vulnerabilities(env: Dict[str, str], min_severity: str, days: int = 1) -> List[Dict]:
+def fetch_vulnerabilities(
+    env: Dict[str, str], min_severity: str, days: int = 1,
+    tag_filters: Dict | None = None,
+) -> List[Dict]:
     """Fetch all vulnerability entries with pagination."""
-    search_body = build_search_filters(min_severity, days)
+    search_body = build_search_filters(min_severity, days, tag_filters)
     body_json = json.dumps(search_body)
 
     Logger.info(f"Fetching vulnerabilities (severity >= {min_severity}, fixable, active)...")

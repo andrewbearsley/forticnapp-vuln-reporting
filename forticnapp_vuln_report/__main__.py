@@ -32,6 +32,7 @@ Examples:
   %(prog)s api-key/mykey.json -f csv -o output/vulns.csv
   %(prog)s api-key/mykey.json -f excel -o output/vulns.xlsx
   %(prog)s api-key/mykey.json --view both --limit 20
+  %(prog)s api-key/mykey.json --tag Name=web-server --tag VpcId=vpc-abc123
         """,
     )
 
@@ -84,6 +85,12 @@ Examples:
         action="store_true",
         help="Disable colored output",
     )
+    parser.add_argument(
+        "--tag",
+        action="append",
+        metavar="KEY=VALUE",
+        help="Filter by machine tag (repeatable, e.g. --tag Name=web-server)",
+    )
 
     return parser.parse_args()
 
@@ -122,8 +129,18 @@ def main():
     api_key = load_api_key(args.api_key_path)
     env = configure_lacework(api_key)
 
+    # Parse tag filters
+    tag_filters = {}
+    if args.tag:
+        for tag_str in args.tag:
+            if "=" not in tag_str:
+                Logger.error(f"Invalid tag format: {tag_str} (expected KEY=VALUE)")
+                sys.exit(1)
+            key, value = tag_str.split("=", 1)
+            tag_filters[key] = value
+
     # Fetch
-    raw_entries = fetch_vulnerabilities(env, min_severity, args.days)
+    raw_entries = fetch_vulnerabilities(env, min_severity, args.days, tag_filters)
     if not raw_entries:
         Logger.warning("No vulnerabilities found matching criteria")
         if output_format == OutputFormat.JSON:

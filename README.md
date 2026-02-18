@@ -102,6 +102,18 @@ python3 -m forticnapp_vuln_report api-key/mykey.json -f excel -o output/vulns.xl
 python3 -m forticnapp_vuln_report api-key/mykey.json --view both --limit 10
 ```
 
+### Filter by machine tag
+
+```bash
+python3 -m forticnapp_vuln_report api-key/mykey.json --tag Name=web-server
+```
+
+Multiple tags (AND logic):
+
+```bash
+python3 -m forticnapp_vuln_report api-key/mykey.json --tag VpcId=vpc-abc123 --tag VmProvider=AWS
+```
+
 ### Verbose logging
 
 ```bash
@@ -122,6 +134,7 @@ python3 -m forticnapp_vuln_report <api-key-path> [options]
 | `-o, --output PATH` | Output file (stdout if omitted) | stdout |
 | `--view {package,host,both}` | Report grouping | `package` |
 | `--limit N` | Top N entries per view | all |
+| `--tag KEY=VALUE` | Filter by machine tag (repeatable) | none |
 | `-v, --verbose` | Verbose logging to stderr | off |
 | `--no-color` | Disable coloured terminal output | off |
 
@@ -193,6 +206,8 @@ Constraints:
 - Rate limited (429 responses handled with incremental backoff)
 
 All API calls go through the Lacework CLI binary (`lacework api post/get`) with `--nocache` to avoid stale results.
+
+The `--tag` flag adds server-side filters on `machineTags` fields. Common keys include `Name`, `Account`, `VpcId`, `Zone`, `VmProvider`, and any custom AWS/Azure resource tags that Lacework has collected.
 
 ## Extending
 
