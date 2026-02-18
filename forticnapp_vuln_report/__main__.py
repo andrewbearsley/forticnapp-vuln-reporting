@@ -48,10 +48,10 @@ Examples:
     parser.add_argument(
         "-d", "--days",
         type=int,
-        default=7,
+        default=1,
         choices=range(1, 8),
         metavar="1-7",
-        help="Number of days to look back (default: 7, max: 7)",
+        help="Number of days to look back (default: 1, max: 7)",
     )
     parser.add_argument(
         "-f", "--format",

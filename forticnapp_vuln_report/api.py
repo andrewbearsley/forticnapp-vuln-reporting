@@ -36,9 +36,11 @@ def make_api_call(
             if result.returncode != 0:
                 if _is_valid_json(result.stdout):
                     return result.stdout, False
-                Logger.warning(f"Command failed (exit {result.returncode})")
-                Logger.verbose(f"Output: {output}")
-                return "", False
+                # Non-zero exit with no valid JSON — likely a suppressed 429
+                # or transient error. Retry with backoff.
+                _handle_rate_limit(retry_count, output)
+                retry_count += 1
+                continue
 
             return result.stdout, False
 
@@ -46,11 +48,11 @@ def make_api_call(
             Logger.warning(f"Error executing command: {e}")
             return "", False
 
-    Logger.warning(f"Failed after {CONFIG.MAX_RETRIES} attempts (rate limited)")
+    Logger.warning(f"Failed after {CONFIG.MAX_RETRIES} attempts")
     return "", True
 
 
-def build_search_filters(min_severity: str, days: int = 7) -> Dict:
+def build_search_filters(min_severity: str, days: int = 1) -> Dict:
     """Build the search request body with filters."""
     now = datetime.datetime.now(datetime.timezone.utc)
     start = now - datetime.timedelta(days=days)
@@ -79,7 +81,7 @@ def build_search_filters(min_severity: str, days: int = 7) -> Dict:
     }
 
 
-def fetch_vulnerabilities(env: Dict[str, str], min_severity: str, days: int = 7) -> List[Dict]:
+def fetch_vulnerabilities(env: Dict[str, str], min_severity: str, days: int = 1) -> List[Dict]:
     """Fetch all vulnerability entries with pagination."""
     search_body = build_search_filters(min_severity, days)
     body_json = json.dumps(search_body)
@@ -126,8 +128,11 @@ def fetch_vulnerabilities(env: Dict[str, str], min_severity: str, days: int = 7)
             "--json", "--noninteractive", "--nocache",
         ]
         output, rate_limited = make_api_call(cmd, env)
-        if rate_limited or not output:
-            Logger.warning(f"Pagination stopped at page {page} (rate limited or empty)")
+        if rate_limited:
+            Logger.warning(f"Pagination stopped at page {page} (rate limited)")
+            break
+        if not output:
+            Logger.warning(f"Pagination stopped at page {page} (API error)")
             break
 
         try:

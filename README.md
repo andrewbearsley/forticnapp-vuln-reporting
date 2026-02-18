@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Basic (Critical severity, Markdown to stdout)
+### Basic (Critical severity, last 24 hours, Markdown to stdout)
 
 ```bash
 python3 -m forticnapp_vuln_report api-key/mykey.json
@@ -117,7 +117,7 @@ python3 -m forticnapp_vuln_report <api-key-path> [options]
 | Option | Description | Default |
 |--------|-------------|---------|
 | `-s, --severity {critical,high,medium,low,info}` | Minimum severity to include | `critical` |
-| `-d, --days 1-7` | Number of days to look back | `7` |
+| `-d, --days 1-7` | Number of days to look back | `1` |
 | `-f, --format {markdown,json,csv,excel}` | Output format | `markdown` |
 | `-o, --output PATH` | Output file (stdout if omitted) | stdout |
 | `--view {package,host,both}` | Report grouping | `package` |
