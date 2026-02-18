@@ -10,6 +10,7 @@ CSV_HEADERS = [
     "Priority", "CVE", "Severity", "CVSS", "Package", "Namespace",
     "Version Installed", "Fixed Version",
     "Hostname", "Instance ID",
+    "First Seen",
     "Exploit Public", "Exploit Wormified", "VM Provider", "Collector Type",
     "CVE Link",
 ]
@@ -35,6 +36,7 @@ def render_csv(vulns: List[ScoredVuln]) -> str:
             v.fixed_version,
             v.hostname,
             v.instance_id,
+            v.first_seen,
             "Yes" if v.exploit_public else "No",
             "Yes" if v.exploit_wormified else "No",
             v.vm_provider,

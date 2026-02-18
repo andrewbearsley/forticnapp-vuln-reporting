@@ -77,6 +77,7 @@ def render_json(
                         "package": v.pkg_name,
                         "version_installed": v.pkg_version_installed,
                         "fixed_version": v.fixed_version,
+                        "first_seen": v.first_seen,
                         "priority_score": v.priority_score,
                     }
                     for v in h.vulns[:20]

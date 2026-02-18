@@ -79,6 +79,11 @@ def extract_scored_vuln(entry: Dict) -> ScoredVuln:
     exploit_public = str(exploit_breakdown.get("exploit_public", "")).lower() == "yes"
     exploit_wormified = str(exploit_breakdown.get("exploit_wormified", "")).lower() == "yes"
 
+    # First seen date from Lacework's detection history
+    props = entry.get("props", {})
+    first_seen_raw = props.get("first_time_seen", "")
+    first_seen = first_seen_raw[:10] if first_seen_raw else ""  # YYYY-MM-DD
+
     sv = ScoredVuln(
         vuln_id=entry.get("vulnId", ""),
         severity=entry.get("severity", ""),
@@ -102,6 +107,7 @@ def extract_scored_vuln(entry: Dict) -> ScoredVuln:
         cve_risk_score=float(entry.get("cveRiskScore", 0) or 0),
         exploit_public=exploit_public,
         exploit_wormified=exploit_wormified,
+        first_seen=first_seen,
         eval_guid=ec.get("eval_guid", ""),
     )
     sv.priority_score = compute_priority_score(sv)

@@ -75,7 +75,7 @@ def build_search_filters(min_severity: str, days: int = 1) -> Dict:
         "filters": filters,
         "returns": [
             "vulnId", "severity", "status", "fixInfo", "featureKey",
-            "machineTags", "cveProps", "evalCtx", "startTime",
+            "machineTags", "cveProps", "evalCtx", "startTime", "props",
             "riskInfo", "hostRiskScore", "cveRiskScore",
         ],
     }

@@ -95,12 +95,15 @@ def _render_package_view(
         lines.append(f"- **Affected hosts:** {len(g.hosts)}")
         lines.append("")
 
-        lines.append("| Hostname | Instance | Version | Score |")
-        lines.append("|----------|----------|---------|-------|")
+        lines.append("| Hostname | Instance | Version | First Seen | Score |")
+        lines.append("|----------|----------|---------|------------|-------|")
+        today = datetime.date.today().isoformat()
         for h in sorted(g.hosts, key=lambda x: x["priority_score"], reverse=True):
+            fs = h.get('first_seen', '')
+            fs_display = f"**{fs} (NEW)**" if fs == today else fs
             lines.append(
                 f"| {h['hostname']} | {h['instance_id']} "
-                f"| {h['version_installed']} | {h['priority_score']} |"
+                f"| {h['version_installed']} | {fs_display} | {h['priority_score']} |"
             )
         lines.append("")
 

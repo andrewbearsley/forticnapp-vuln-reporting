@@ -33,17 +33,21 @@ def group_by_package(vulns: List[ScoredVuln]) -> List[PackageGroup]:
         if v.cvss_score > g.max_cvss:
             g.max_cvss = v.cvss_score
 
-        # Track host (dedupe within group)
-        host_entry = {
-            "machine_id": v.machine_id,
-            "hostname": v.hostname,
-            "instance_id": v.instance_id,
-            "priority_score": v.priority_score,
-            "collector_type": v.collector_type,
-            "version_installed": v.pkg_version_installed,
-        }
-        if not any(h["machine_id"] == v.machine_id for h in g.hosts):
-            g.hosts.append(host_entry)
+        # Track host (dedupe within group, keep earliest first_seen)
+        existing_host = next((h for h in g.hosts if h["machine_id"] == v.machine_id), None)
+        if existing_host is None:
+            g.hosts.append({
+                "machine_id": v.machine_id,
+                "hostname": v.hostname,
+                "instance_id": v.instance_id,
+                "priority_score": v.priority_score,
+                "collector_type": v.collector_type,
+                "version_installed": v.pkg_version_installed,
+                "first_seen": v.first_seen,
+            })
+        else:
+            if v.first_seen and (not existing_host["first_seen"] or v.first_seen < existing_host["first_seen"]):
+                existing_host["first_seen"] = v.first_seen
 
         if v.exploit_public or v.exploit_wormified:
             g.exploit_count = max(g.exploit_count, 1)

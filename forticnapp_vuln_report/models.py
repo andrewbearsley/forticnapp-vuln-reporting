@@ -38,6 +38,9 @@ class ScoredVuln:
     exploit_public: bool
     exploit_wormified: bool
 
+    # Timing
+    first_seen: str = ""  # earliest startTime across deduped entries (ISO date)
+
     # Computed
     priority_score: float = 0.0
     eval_guid: str = ""

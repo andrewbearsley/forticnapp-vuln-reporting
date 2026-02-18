@@ -145,17 +145,18 @@ def write_excel(
         ws_detail.cell(row=row, column=8, value=v.fixed_version)
         ws_detail.cell(row=row, column=9, value=v.hostname)
         ws_detail.cell(row=row, column=10, value=v.instance_id)
-        ws_detail.cell(row=row, column=11, value="Yes" if v.exploit_public else "No")
-        ws_detail.cell(row=row, column=12, value="Yes" if v.exploit_wormified else "No")
-        ws_detail.cell(row=row, column=13, value=v.vm_provider)
-        ws_detail.cell(row=row, column=14, value=v.collector_type)
+        ws_detail.cell(row=row, column=11, value=v.first_seen)
+        ws_detail.cell(row=row, column=12, value="Yes" if v.exploit_public else "No")
+        ws_detail.cell(row=row, column=13, value="Yes" if v.exploit_wormified else "No")
+        ws_detail.cell(row=row, column=14, value=v.vm_provider)
+        ws_detail.cell(row=row, column=15, value=v.collector_type)
 
         if v.cve_link:
-            cell = ws_detail.cell(row=row, column=15, value=v.cve_link)
+            cell = ws_detail.cell(row=row, column=16, value=v.cve_link)
             cell.hyperlink = v.cve_link
             cell.font = link_font
         else:
-            ws_detail.cell(row=row, column=15, value="")
+            ws_detail.cell(row=row, column=16, value="")
 
     adjust_widths(ws_detail, len(CSV_HEADERS))
     add_autofilter(ws_detail, len(CSV_HEADERS))
