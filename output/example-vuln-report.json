@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "generated": "2026-02-17T02:17:14.057947+00:00",
+    "generated": "2026-02-18T05:20:12.966509+00:00",
     "min_severity": "Critical",
     "fixable_only": true,
-    "total_entries": 103
+    "total_entries": 102
   },
   "summary": {
-    "unique_cves": 74,
-    "vulnerable_packages": 20,
+    "unique_cves": 73,
+    "vulnerable_packages": 19,
     "affected_hosts": 4,
-    "critical_count": 103,
+    "critical_count": 102,
     "high_count": 0
   },
   "by_package": [
@@ -36,85 +36,20 @@
           "version_installed": "1.2.0"
         },
         {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "1.2.5"
-        },
-        {
           "machine_id": "i-017ae4a71a0aeb374",
           "hostname": "ip-172-17-1-165.ap-southeast-1.compute.internal",
           "instance_id": "i-017ae4a71a0aeb374",
           "priority_score": 11.8,
           "collector_type": "Agentless",
           "version_installed": "1.2.5"
-        }
-      ]
-    },
-    {
-      "package": "pbkdf2",
-      "namespace": "npm",
-      "fixed_version": "3.1.3",
-      "cve_ids": [
-        "CVE-2025-6545",
-        "CVE-2025-6547"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.96,
-      "host_count": 2,
-      "aggregate_score": 12.96,
-      "hosts": [
+        },
         {
           "machine_id": "i-0f3c4563f1c12a574",
           "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
           "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.96,
+          "priority_score": 11.8,
           "collector_type": "Agentless",
-          "version_installed": "3.0.17"
-        },
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.96,
-          "collector_type": "Agentless",
-          "version_installed": "3.0.14"
-        }
-      ]
-    },
-    {
-      "package": "elliptic",
-      "namespace": "npm",
-      "fixed_version": "6.6.1",
-      "cve_ids": [
-        "GHSA-vjh7-7g9h-fjfh"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.96,
-      "host_count": 2,
-      "aggregate_score": 12.96,
-      "hosts": [
-        {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.96,
-          "collector_type": "Agentless",
-          "version_installed": "6.4.0"
-        },
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.96,
-          "collector_type": "Agentless",
-          "version_installed": "6.4.0"
+          "version_installed": "1.2.5"
         }
       ]
     },
@@ -151,6 +86,103 @@
       ]
     },
     {
+      "package": "elliptic",
+      "namespace": "npm",
+      "fixed_version": "6.6.1",
+      "cve_ids": [
+        "GHSA-vjh7-7g9h-fjfh"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.96,
+      "host_count": 2,
+      "aggregate_score": 12.96,
+      "hosts": [
+        {
+          "machine_id": "i-0f3c4563f1c12a574",
+          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
+          "instance_id": "i-0f3c4563f1c12a574",
+          "priority_score": 11.96,
+          "collector_type": "Agentless",
+          "version_installed": "6.5.2"
+        },
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.96,
+          "collector_type": "Agentless",
+          "version_installed": "6.4.0"
+        }
+      ]
+    },
+    {
+      "package": "pbkdf2",
+      "namespace": "npm",
+      "fixed_version": "3.1.3",
+      "cve_ids": [
+        "CVE-2025-6545",
+        "CVE-2025-6547"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.96,
+      "host_count": 2,
+      "aggregate_score": 12.96,
+      "hosts": [
+        {
+          "machine_id": "i-0f3c4563f1c12a574",
+          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
+          "instance_id": "i-0f3c4563f1c12a574",
+          "priority_score": 11.96,
+          "collector_type": "Agentless",
+          "version_installed": "3.1.2"
+        },
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.96,
+          "collector_type": "Agentless",
+          "version_installed": "3.0.14"
+        }
+      ]
+    },
+    {
+      "package": "minimist",
+      "namespace": "npm",
+      "fixed_version": "0.2.4",
+      "cve_ids": [
+        "CVE-2021-44906"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 2,
+      "aggregate_score": 12.8,
+      "hosts": [
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "0.0.10"
+        },
+        {
+          "machine_id": "i-0f3c4563f1c12a574",
+          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
+          "instance_id": "i-0f3c4563f1c12a574",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "0.0.8"
+        }
+      ]
+    },
+    {
       "package": "growl",
       "namespace": "npm",
       "fixed_version": "1.10.0",
@@ -179,38 +211,6 @@
           "priority_score": 11.8,
           "collector_type": "Agentless",
           "version_installed": "1.9.2"
-        }
-      ]
-    },
-    {
-      "package": "minimist",
-      "namespace": "npm",
-      "fixed_version": "0.2.4",
-      "cve_ids": [
-        "CVE-2021-44906"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 2,
-      "aggregate_score": 12.8,
-      "hosts": [
-        {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "0.0.8"
-        },
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "0.0.8"
         }
       ]
     },
@@ -266,7 +266,7 @@
           "instance_id": "i-0f3c4563f1c12a574",
           "priority_score": 11.1,
           "collector_type": "Agentless",
-          "version_installed": "3.10.1"
+          "version_installed": "4.17.4"
         },
         {
           "machine_id": "i-0799e3a4b56be2630",
@@ -275,6 +275,38 @@
           "priority_score": 11.1,
           "collector_type": "Agentless",
           "version_installed": "4.17.5"
+        }
+      ]
+    },
+    {
+      "package": "sha.js",
+      "namespace": "npm",
+      "fixed_version": "2.4.12",
+      "cve_ids": [
+        "CVE-2025-9288"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.1,
+      "host_count": 2,
+      "aggregate_score": 12.1,
+      "hosts": [
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.1,
+          "collector_type": "Agentless",
+          "version_installed": "2.4.10"
+        },
+        {
+          "machine_id": "i-0f3c4563f1c12a574",
+          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
+          "instance_id": "i-0f3c4563f1c12a574",
+          "priority_score": 11.1,
+          "collector_type": "Agentless",
+          "version_installed": "2.4.11"
         }
       ]
     },
@@ -307,38 +339,6 @@
           "priority_score": 11.1,
           "collector_type": "Agentless",
           "version_installed": "1.0.4"
-        }
-      ]
-    },
-    {
-      "package": "sha.js",
-      "namespace": "npm",
-      "fixed_version": "2.4.12",
-      "cve_ids": [
-        "CVE-2025-9288"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.1,
-      "host_count": 2,
-      "aggregate_score": 12.1,
-      "hosts": [
-        {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.1,
-          "collector_type": "Agentless",
-          "version_installed": "2.4.8"
-        },
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.1,
-          "collector_type": "Agentless",
-          "version_installed": "2.4.10"
         }
       ]
     },
@@ -392,6 +392,30 @@
       ]
     },
     {
+      "package": "deep-extend",
+      "namespace": "npm",
+      "fixed_version": "0.5.1",
+      "cve_ids": [
+        "CVE-2018-3750"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 1,
+      "aggregate_score": 11.8,
+      "hosts": [
+        {
+          "machine_id": "i-0f3c4563f1c12a574",
+          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
+          "instance_id": "i-0f3c4563f1c12a574",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "0.4.2"
+        }
+      ]
+    },
+    {
       "package": "socket.io-parser",
       "namespace": "npm",
       "fixed_version": "4.2.1",
@@ -441,11 +465,84 @@
       ]
     },
     {
+      "package": "deeply",
+      "namespace": "npm",
+      "fixed_version": "3.1.0",
+      "cve_ids": [
+        "CVE-2019-10750"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 1,
+      "aggregate_score": 11.8,
+      "hosts": [
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "1.0.0"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5068787",
+      "cve_ids": [
+        "CVE-2025-60724"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 1,
+      "aggregate_score": 11.8,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
       "package": "Microsoft Windows Server 2022",
       "namespace": "win:s2022",
       "fixed_version": "KB5070884",
       "cve_ids": [
         "CVE-2025-59287"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 1,
+      "aggregate_score": 11.8,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5063812",
+      "cve_ids": [
+        "CVE-2025-50177",
+        "CVE-2025-53766"
       ],
       "severities": [
         "Critical"
@@ -490,102 +587,6 @@
       ]
     },
     {
-      "package": "handlebars",
-      "namespace": "npm",
-      "fixed_version": "4.3.0",
-      "cve_ids": [
-        "CVE-2019-19919"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 1,
-      "aggregate_score": 11.8,
-      "hosts": [
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "4.0.11"
-        }
-      ]
-    },
-    {
-      "package": "deeply",
-      "namespace": "npm",
-      "fixed_version": "3.1.0",
-      "cve_ids": [
-        "CVE-2019-10750"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 1,
-      "aggregate_score": 11.8,
-      "hosts": [
-        {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "1.0.0"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5068840",
-      "cve_ids": [
-        "CVE-2025-60724"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 1,
-      "aggregate_score": 11.8,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "deep-extend",
-      "namespace": "npm",
-      "fixed_version": "0.5.1",
-      "cve_ids": [
-        "CVE-2018-3750"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 1,
-      "aggregate_score": 11.8,
-      "hosts": [
-        {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "0.4.2"
-        }
-      ]
-    },
-    {
       "package": "cryptiles",
       "namespace": "npm",
       "fixed_version": "4.1.2",
@@ -610,11 +611,11 @@
       ]
     },
     {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5063812",
+      "package": "handlebars",
+      "namespace": "npm",
+      "fixed_version": "4.3.0",
       "cve_ids": [
-        "CVE-2025-53766"
+        "CVE-2019-19919"
       ],
       "severities": [
         "Critical"
@@ -624,36 +625,12 @@
       "aggregate_score": 11.8,
       "hosts": [
         {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
           "priority_score": 11.8,
           "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "pillow",
-      "namespace": "python",
-      "fixed_version": "12.1.1",
-      "cve_ids": [
-        "CVE-2021-25289"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 9.8,
-      "host_count": 1,
-      "aggregate_score": 11.8,
-      "hosts": [
-        {
-          "machine_id": "i-0f3c4563f1c12a574",
-          "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
-          "instance_id": "i-0f3c4563f1c12a574",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "10.4.0"
+          "version_installed": "4.0.11"
         }
       ]
     },
@@ -710,62 +687,8 @@
       "namespace": "win:s2022",
       "fixed_version": "KB5058385",
       "cve_ids": [
-        "CVE-2025-29833",
         "CVE-2025-29966",
         "CVE-2025-29967"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.8,
-      "host_count": 1,
-      "aggregate_score": 10.8,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.8,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5063880",
-      "cve_ids": [
-        "CVE-2025-50176",
-        "CVE-2025-50177",
-        "CVE-2025-53778"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.8,
-      "host_count": 1,
-      "aggregate_score": 10.8,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.8,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5053638",
-      "cve_ids": [
-        "CVE-2025-24035",
-        "CVE-2025-24045",
-        "CVE-2025-24064",
-        "CVE-2025-26645"
       ],
       "severities": [
         "Critical"
@@ -811,50 +734,23 @@
     {
       "package": "Microsoft Windows Server 2022",
       "namespace": "win:s2022",
-      "fixed_version": "KB5062572",
+      "fixed_version": "KB5065432",
       "cve_ids": [
-        "CVE-2024-36350",
-        "CVE-2024-36357",
-        "CVE-2025-47980",
-        "CVE-2025-47981",
-        "CVE-2025-48822"
+        "CVE-2025-53800",
+        "CVE-2025-54918"
       ],
       "severities": [
         "Critical"
       ],
-      "max_cvss": 9.8,
+      "max_cvss": 8.8,
       "host_count": 1,
-      "aggregate_score": 10.6,
+      "aggregate_score": 10.8,
       "hosts": [
         {
           "machine_id": "i-0c8104214f010bf57",
           "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
           "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.6,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5053603",
-      "cve_ids": [
-        "CVE-2025-24084"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.4,
-      "host_count": 1,
-      "aggregate_score": 10.4,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.4,
+          "priority_score": 10.8,
           "collector_type": "Agentless",
           "version_installed": "KB5048654"
         }
@@ -891,6 +787,88 @@
       ]
     },
     {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5055526",
+      "cve_ids": [
+        "CVE-2025-26663",
+        "CVE-2025-26670",
+        "CVE-2025-26686",
+        "CVE-2025-27480",
+        "CVE-2025-27482",
+        "CVE-2025-27491"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 8.1,
+      "host_count": 1,
+      "aggregate_score": 10.1,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 10.1,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5053603",
+      "cve_ids": [
+        "CVE-2025-24035",
+        "CVE-2025-24045",
+        "CVE-2025-24064",
+        "CVE-2025-24084",
+        "CVE-2025-26645"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 8.8,
+      "host_count": 1,
+      "aggregate_score": 10.1,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 10.1,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5058500",
+      "cve_ids": [
+        "CVE-2025-29833",
+        "CVE-2025-32710"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 8.1,
+      "host_count": 1,
+      "aggregate_score": 10.1,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 10.1,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
       "package": "xmlhttprequest-ssl",
       "namespace": "npm",
       "fixed_version": "1.6.2",
@@ -911,56 +889,6 @@
           "priority_score": 10.1,
           "collector_type": "Agentless",
           "version_installed": "1.5.3"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5060525",
-      "cve_ids": [
-        "CVE-2025-29828",
-        "CVE-2025-33070",
-        "CVE-2025-33071"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.1,
-      "host_count": 1,
-      "aggregate_score": 10.1,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.1,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5058500",
-      "cve_ids": [
-        "CVE-2025-32710"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.1,
-      "host_count": 1,
-      "aggregate_score": 10.1,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 10.1,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
         }
       ]
     },
@@ -1015,12 +943,40 @@
     {
       "package": "Microsoft Windows Server 2022",
       "namespace": "win:s2022",
+      "fixed_version": "KB5060525",
+      "cve_ids": [
+        "CVE-2025-29828",
+        "CVE-2025-33070",
+        "CVE-2025-33071"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 8.1,
+      "host_count": 1,
+      "aggregate_score": 10.1,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 10.1,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
       "fixed_version": "KB5065306",
       "cve_ids": [
         "CVE-2025-48807",
         "CVE-2025-53799",
         "CVE-2025-55224",
-        "CVE-2025-55226"
+        "CVE-2025-55226",
+        "CVE-2025-55228",
+        "CVE-2025-55236"
       ],
       "severities": [
         "Critical"
@@ -1042,12 +998,10 @@
     {
       "package": "Microsoft Windows Server 2022",
       "namespace": "win:s2022",
-      "fixed_version": "KB5065432",
+      "fixed_version": "KB5063880",
       "cve_ids": [
-        "CVE-2025-53800",
-        "CVE-2025-54918",
-        "CVE-2025-55228",
-        "CVE-2025-55236"
+        "CVE-2025-50176",
+        "CVE-2025-53778"
       ],
       "severities": [
         "Critical"
@@ -1093,36 +1047,7 @@
     {
       "package": "Microsoft Windows Server 2022",
       "namespace": "win:s2022",
-      "fixed_version": "KB5055526",
-      "cve_ids": [
-        "CVE-2025-26663",
-        "CVE-2025-26670",
-        "CVE-2025-26686",
-        "CVE-2025-27480",
-        "CVE-2025-27482",
-        "CVE-2025-27491"
-      ],
-      "severities": [
-        "Critical"
-      ],
-      "max_cvss": 8.1,
-      "host_count": 1,
-      "aggregate_score": 9.5,
-      "hosts": [
-        {
-          "machine_id": "i-0c8104214f010bf57",
-          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
-          "instance_id": "i-0c8104214f010bf57",
-          "priority_score": 9.5,
-          "collector_type": "Agentless",
-          "version_installed": "KB5048654"
-        }
-      ]
-    },
-    {
-      "package": "Microsoft Windows Server 2022",
-      "namespace": "win:s2022",
-      "fixed_version": "KB5068787",
+      "fixed_version": "KB5068840",
       "cve_ids": [
         "CVE-2025-60716"
       ],
@@ -1138,6 +1063,34 @@
           "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
           "instance_id": "i-0c8104214f010bf57",
           "priority_score": 9.0,
+          "collector_type": "Agentless",
+          "version_installed": "KB5048654"
+        }
+      ]
+    },
+    {
+      "package": "Microsoft Windows Server 2022",
+      "namespace": "win:s2022",
+      "fixed_version": "KB5062572",
+      "cve_ids": [
+        "CVE-2024-36350",
+        "CVE-2024-36357",
+        "CVE-2025-47980",
+        "CVE-2025-47981",
+        "CVE-2025-48822"
+      ],
+      "severities": [
+        "Critical"
+      ],
+      "max_cvss": 9.8,
+      "host_count": 1,
+      "aggregate_score": 8.2,
+      "hosts": [
+        {
+          "machine_id": "i-0c8104214f010bf57",
+          "hostname": "ip-172-17-2-185.ap-southeast-1.compute.internal",
+          "instance_id": "i-0c8104214f010bf57",
+          "priority_score": 8.2,
           "collector_type": "Agentless",
           "version_installed": "KB5048654"
         }
