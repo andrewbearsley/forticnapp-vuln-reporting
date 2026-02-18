@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-02-18T05:36:16.879195+00:00",
+    "generated": "2026-02-18T06:21:49.604649+00:00",
     "min_severity": "Critical",
     "fixable_only": true,
     "total_entries": 102
@@ -71,21 +71,21 @@
       "aggregate_score": 12.96,
       "hosts": [
         {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.96,
-          "collector_type": "Agentless",
-          "version_installed": "2.3.1",
-          "first_seen": "2025-07-24"
-        },
-        {
           "machine_id": "i-0f3c4563f1c12a574",
           "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
           "instance_id": "i-0f3c4563f1c12a574",
           "priority_score": 11.96,
           "collector_type": "Agentless",
           "version_installed": "2.1.4",
+          "first_seen": "2025-07-24"
+        },
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.96,
+          "collector_type": "Agentless",
+          "version_installed": "2.3.1",
           "first_seen": "2025-07-24"
         }
       ]
@@ -145,7 +145,7 @@
           "instance_id": "i-0f3c4563f1c12a574",
           "priority_score": 11.96,
           "collector_type": "Agentless",
-          "version_installed": "3.0.12",
+          "version_installed": "3.1.2",
           "first_seen": "2025-06-26"
         },
         {
@@ -208,15 +208,6 @@
       "aggregate_score": 12.8,
       "hosts": [
         {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.8,
-          "collector_type": "Agentless",
-          "version_installed": "1.9.2",
-          "first_seen": "2025-03-18"
-        },
-        {
           "machine_id": "i-0f3c4563f1c12a574",
           "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
           "instance_id": "i-0f3c4563f1c12a574",
@@ -224,6 +215,15 @@
           "collector_type": "Agentless",
           "version_installed": "1.9.2",
           "first_seen": "2025-05-31"
+        },
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.8,
+          "collector_type": "Agentless",
+          "version_installed": "1.9.2",
+          "first_seen": "2025-03-18"
         }
       ]
     },
@@ -310,21 +310,21 @@
       "aggregate_score": 12.1,
       "hosts": [
         {
-          "machine_id": "i-0799e3a4b56be2630",
-          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
-          "instance_id": "i-0799e3a4b56be2630",
-          "priority_score": 11.1,
-          "collector_type": "Agentless",
-          "version_installed": "2.4.10",
-          "first_seen": "2025-08-24"
-        },
-        {
           "machine_id": "i-0f3c4563f1c12a574",
           "hostname": "ip-10-100-3-123.ap-southeast-1.compute.internal",
           "instance_id": "i-0f3c4563f1c12a574",
           "priority_score": 11.1,
           "collector_type": "Agentless",
           "version_installed": "2.4.11",
+          "first_seen": "2025-08-24"
+        },
+        {
+          "machine_id": "i-0799e3a4b56be2630",
+          "hostname": "ip-172-17-2-49.ap-southeast-1.compute.internal",
+          "instance_id": "i-0799e3a4b56be2630",
+          "priority_score": 11.1,
+          "collector_type": "Agentless",
+          "version_installed": "2.4.10",
           "first_seen": "2025-08-24"
         }
       ]

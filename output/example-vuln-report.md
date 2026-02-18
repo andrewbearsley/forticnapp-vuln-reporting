@@ -1,6 +1,6 @@
 # FortiCNAPP Host Vulnerability Report
 
-**Generated:** 2026-02-18 16:36
+**Generated:** 2026-02-18 17:21
 **Minimum severity:** Critical
 **Fixable only:** Yes
 
@@ -70,8 +70,8 @@
 | Hostname | Instance | Version | First Seen | Score |
 |----------|----------|---------|------------|-------|
 | ip-172-17-2-49.ap-southeast-1.compute.internal | i-0799e3a4b56be2630 | 1.2.0 | 2025-03-18 | 11.8 |
-| ip-10-100-3-123.ap-southeast-1.compute.internal | i-0f3c4563f1c12a574 | 1.2.5 | 2025-05-31 | 11.8 |
 | ip-172-17-1-165.ap-southeast-1.compute.internal | i-017ae4a71a0aeb374 | 1.2.5 | 2025-09-08 | 11.8 |
+| ip-10-100-3-123.ap-southeast-1.compute.internal | i-0f3c4563f1c12a574 | 1.2.5 | 2025-05-31 | 11.8 |
 
 ### 2. form-data (npm)
 
@@ -135,8 +135,8 @@
 
 | Hostname | Instance | Version | First Seen | Score |
 |----------|----------|---------|------------|-------|
-| ip-172-17-2-49.ap-southeast-1.compute.internal | i-0799e3a4b56be2630 | 1.9.2 | 2025-03-18 | 11.8 |
 | ip-10-100-3-123.ap-southeast-1.compute.internal | i-0f3c4563f1c12a574 | 1.9.2 | 2025-05-31 | 11.8 |
+| ip-172-17-2-49.ap-southeast-1.compute.internal | i-0799e3a4b56be2630 | 1.9.2 | 2025-03-18 | 11.8 |
 
 ### 7. json-schema (npm)
 
@@ -174,8 +174,8 @@
 
 | Hostname | Instance | Version | First Seen | Score |
 |----------|----------|---------|------------|-------|
-| ip-10-100-3-123.ap-southeast-1.compute.internal | i-0f3c4563f1c12a574 | 2.4.11 | 2025-08-24 | 11.1 |
 | ip-172-17-2-49.ap-southeast-1.compute.internal | i-0799e3a4b56be2630 | 2.4.10 | 2025-08-24 | 11.1 |
+| ip-10-100-3-123.ap-southeast-1.compute.internal | i-0f3c4563f1c12a574 | 2.4.11 | 2025-08-24 | 11.1 |
 
 ### 10. cipher-base (npm)
 
